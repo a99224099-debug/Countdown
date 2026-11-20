@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Timers;
 
 namespace Countdown;
     public static class Countdown
     {
-        public static int Remaining_Time = 10;
-        public static void Start()
+        public static void Start(int initial_time)
         {
+            int Remaining_Time = initial_time;
             while (Remaining_Time > 0)
             {
                 Console.Clear();
@@ -21,7 +22,14 @@ namespace Countdown;
     {
         static void Main(string[] args)
         {
-            Countdown.Start();
+        if (int.TryParse(Console.ReadLine(), out int initial_time))
+        {
+            Countdown.Start(initial_time);
+        }
+        else
+        {
+            Console.WriteLine("숫자를 입력해 주세요.");
+        }
         }
     }
 
